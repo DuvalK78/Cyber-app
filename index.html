@@ -3,14 +3,279 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cyber — Duval Kerian</title>
-<link href="https://fonts.googleapis.com/css2?family=Futuristic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>KASURAKU-SHI</title>
+
 <style>
-  
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    overflow:hidden;
+    height:100vh;
+    font-family:Consolas, monospace;
+    color:white;
+}
+
+/* Bruit numérique */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.015),
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events:none;
+}
+
+/* Popups */
+
+.popup{
+    position:absolute;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(3px);
+    padding:10px 15px;
+    color:#00e5ff;
+    font-size:14px;
+    white-space:pre-line;
+    animation:glitch .08s infinite alternate;
+}
+
+@keyframes glitch{
+
+    0%{
+        transform:translate(0px);
+    }
+
+    100%{
+        transform:translate(1px,-1px);
+    }
+
+}
+
+/* Intro finale */
+
+#mainIntro{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    opacity:0;
+    transition:2s;
+}
+
+#cityName{
+    font-size:clamp(40px,8vw,110px);
+    letter-spacing:12px;
+}
+
+#sub{
+    margin-top:10px;
+    opacity:.5;
+    letter-spacing:4px;
+}
+
+#presence{
+    position:absolute;
+    right:8%;
+    top:65%;
+    color:#00e5ff;
+    opacity:0;
+    transition:1.5s;
+}
+
+#cursor{
+    margin-top:40px;
+    font-size:30px;
+    animation:blink .8s infinite;
+    opacity:0;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+.entered{
+    color:#00e5ff;
+}
+
 </style>
 </head>
+<body>
 
-  <body>
-    
-  </body>
+<div id="popupContainer"></div>
+
+<div id="mainIntro">
+
+    <h1 id="cityName">
+        KASURAKU-SHI
+    </h1>
+
+    <div id="sub">
+        都市ネットワーク
+        <br>
+        CITY NETWORK
+    </div>
+
+    <div id="cursor">
+        >
+    </div>
+
+</div>
+
+<div id="presence">
+    PRESENCE DETECTED
+</div>
+
+<script>
+
+const messages = [
+
+"存在検出\nPRESENCE DETECTED",
+"接続",
+"記録中",
+"認証失敗",
+"区画_08",
+"DATA_FRAGMENT",
+"KSRK://NODE_17",
+"KSRK://NODE_91",
+"UNKNOWN USER",
+"SIGNAL LOST",
+"監視中",
+"ARCHIVE_ERROR",
+"0x7AF23",
+"0x00A991",
+"██ DATA ██",
+"TRANSMISSION LOST",
+"ERROR_77",
+"NODE_44",
+"RECORDING",
+"接続不可",
+"UNREGISTERED",
+"???",
+"記録破損",
+"区画_14",
+"KSRK://",
+"████████████",
+"...",
+"....",
+"警告",
+"ARCHIVE_LOCKED"
+
+];
+
+const container = document.getElementById("popupContainer");
+
+function createPopup(){
+
+    const popup = document.createElement("div");
+
+    popup.className = "popup";
+
+    popup.innerText =
+        messages[
+            Math.floor(
+                Math.random()*messages.length
+            )
+        ];
+
+    popup.style.left =
+        Math.random()*90 + "%";
+
+    popup.style.top =
+        Math.random()*90 + "%";
+
+    popup.style.color =
+        [
+            "#00e5ff",
+            "#ff2e63",
+            "#8b5cf6",
+            "#ffffff"
+        ][Math.floor(Math.random()*4)];
+
+    popup.style.fontSize =
+        (12 + Math.random()*10) + "px";
+
+    container.appendChild(popup);
+
+    setTimeout(()=>{
+        popup.remove();
+    },500 + Math.random()*800);
+
+}
+
+let burst = setInterval(()=>{
+
+    for(let i=0;i<8;i++){
+        createPopup();
+    }
+
+},150);
+
+setTimeout(()=>{
+
+    clearInterval(burst);
+
+    container.innerHTML = "";
+
+},6000);
+
+/* apparition ville */
+
+setTimeout(()=>{
+
+    document
+    .getElementById("mainIntro")
+    .style.opacity = "1";
+
+},9000);
+
+setTimeout(()=>{
+
+    document
+    .getElementById("presence")
+    .style.opacity = "1";
+
+},11000);
+
+setTimeout(()=>{
+
+    document
+    .getElementById("cursor")
+    .style.opacity = "1";
+
+},13000);
+
+/* interaction */
+
+document.addEventListener("keydown", enter);
+document.addEventListener("click", enter);
+
+function enter(){
+
+    document.body.classList.add("entered");
+
+    document.getElementById("cursor").innerText =
+        "LINK ESTABLISHED";
+
+}
+
+</script>
+
+</body>
 </html>
