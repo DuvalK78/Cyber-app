@@ -1,0 +1,19 @@
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+
+}
+
+@keyframes popupGlitch{
+
+    from{
+        transform:translate(0);
+    }
+
+    to{
+        transform:translate(1px,-1px);
+    }
+
+}
