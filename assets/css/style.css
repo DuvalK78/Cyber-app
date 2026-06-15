@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    overflow:hidden;
+    font-family:Consolas, monospace;
+    color:white;
+}
+
+.hidden{
+    display:none;
+}
+
+#intro{
+    width:100vw;
+    height:100vh;
+}
