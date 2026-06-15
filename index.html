@@ -1,281 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KASURAKU-SHI</title>
 
-<style>
+    <meta charset="UTF-8">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <title>KASURAKU-SHI</title>
 
-body{
-    background:#000;
-    overflow:hidden;
-    height:100vh;
-    font-family:Consolas, monospace;
-    color:white;
-}
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/intro.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 
-/* Bruit numérique */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:
-    repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.015),
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 2px
-    );
-    pointer-events:none;
-}
-
-/* Popups */
-
-.popup{
-    position:absolute;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(3px);
-    padding:10px 15px;
-    color:#00e5ff;
-    font-size:14px;
-    white-space:pre-line;
-    animation:glitch .08s infinite alternate;
-}
-
-@keyframes glitch{
-
-    0%{
-        transform:translate(0px);
-    }
-
-    100%{
-        transform:translate(1px,-1px);
-    }
-
-}
-
-/* Intro finale */
-
-#mainIntro{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    opacity:0;
-    transition:2s;
-}
-
-#cityName{
-    font-size:clamp(40px,8vw,110px);
-    letter-spacing:12px;
-}
-
-#sub{
-    margin-top:10px;
-    opacity:.5;
-    letter-spacing:4px;
-}
-
-#presence{
-    position:absolute;
-    right:8%;
-    top:65%;
-    color:#00e5ff;
-    opacity:0;
-    transition:1.5s;
-}
-
-#cursor{
-    margin-top:40px;
-    font-size:30px;
-    animation:blink .8s infinite;
-    opacity:0;
-}
-
-@keyframes blink{
-    50%{
-        opacity:0;
-    }
-}
-
-.entered{
-    color:#00e5ff;
-}
-
-</style>
 </head>
+
 <body>
 
-<div id="popupContainer"></div>
+    <main id="intro">
 
-<div id="mainIntro">
+        <div id="boot-screen">
 
-    <h1 id="cityName">
-        KASURAKU-SHI
-    </h1>
+            <div id="boot-trigger">
+                >
+            </div>
 
-    <div id="sub">
-        都市ネットワーク
-        <br>
-        CITY NETWORK
-    </div>
+        </div>
 
-    <div id="cursor">
-        >
-    </div>
+        <div id="presence-screen" class="hidden">
 
-</div>
+            <h1>
+                PRESENCE DETECTED
+            </h1>
 
-<div id="presence">
-    PRESENCE DETECTED
-</div>
+        </div>
 
-<script>
+        <div id="loading-screen" class="hidden">
 
-const messages = [
+            <div id="identity">
 
-"存在検出\nPRESENCE DETECTED",
-"接続",
-"記録中",
-"認証失敗",
-"区画_08",
-"DATA_FRAGMENT",
-"KSRK://NODE_17",
-"KSRK://NODE_91",
-"UNKNOWN USER",
-"SIGNAL LOST",
-"監視中",
-"ARCHIVE_ERROR",
-"0x7AF23",
-"0x00A991",
-"██ DATA ██",
-"TRANSMISSION LOST",
-"ERROR_77",
-"NODE_44",
-"RECORDING",
-"接続不可",
-"UNREGISTERED",
-"???",
-"記録破損",
-"区画_14",
-"KSRK://",
-"████████████",
-"...",
-"....",
-"警告",
-"ARCHIVE_LOCKED"
+                IDENTITY : UNKNOWN
 
-];
+            </div>
 
-const container = document.getElementById("popupContainer");
+            <div id="loading-text">
 
-function createPopup(){
+                VERIFYING NODE ACCESS...
 
-    const popup = document.createElement("div");
+            </div>
 
-    popup.className = "popup";
+            <div id="loading-bar">
 
-    popup.innerText =
-        messages[
-            Math.floor(
-                Math.random()*messages.length
-            )
-        ];
+                <div id="loading-progress"></div>
 
-    popup.style.left =
-        Math.random()*90 + "%";
+            </div>
 
-    popup.style.top =
-        Math.random()*90 + "%";
+        </div>
 
-    popup.style.color =
-        [
-            "#00e5ff",
-            "#ff2e63",
-            "#8b5cf6",
-            "#ffffff"
-        ][Math.floor(Math.random()*4)];
+        <div id="popup-container"></div>
 
-    popup.style.fontSize =
-        (12 + Math.random()*10) + "px";
+        <div id="city-screen" class="hidden">
 
-    container.appendChild(popup);
+            <h1 id="city-title">
+                KASURAKU-SHI
+            </h1>
 
-    setTimeout(()=>{
-        popup.remove();
-    },500 + Math.random()*800);
+            <p>
+                都市ネットワーク
+            </p>
 
-}
+            <p>
+                CITY NETWORK
+            </p>
 
-let burst = setInterval(()=>{
+            <div id="link-status">
 
-    for(let i=0;i<8;i++){
-        createPopup();
-    }
+                LINK ESTABLISHED
 
-},150);
+            </div>
 
-setTimeout(()=>{
+        </div>
 
-    clearInterval(burst);
+    </main>
 
-    container.innerHTML = "";
-
-},6000);
-
-/* apparition ville */
-
-setTimeout(()=>{
-
-    document
-    .getElementById("mainIntro")
-    .style.opacity = "1";
-
-},9000);
-
-setTimeout(()=>{
-
-    document
-    .getElementById("presence")
-    .style.opacity = "1";
-
-},11000);
-
-setTimeout(()=>{
-
-    document
-    .getElementById("cursor")
-    .style.opacity = "1";
-
-},13000);
-
-/* interaction */
-
-document.addEventListener("keydown", enter);
-document.addEventListener("click", enter);
-
-function enter(){
-
-    document.body.classList.add("entered");
-
-    document.getElementById("cursor").innerText =
-        "LINK ESTABLISHED";
-
-}
-
-</script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/popupSystem.js"></script>
+    <script src="assets/js/intro.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
