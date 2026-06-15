@@ -1,0 +1,76 @@
+#boot-screen,
+#presence-screen,
+#loading-screen,
+#city-screen{
+
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+#boot-trigger{
+
+    font-size:3rem;
+    cursor:pointer;
+
+    animation:blink 1s infinite;
+}
+
+#presence-screen h1{
+
+    font-size:8vw;
+    letter-spacing:10px;
+
+    color:white;
+}
+
+#identity{
+
+    margin-bottom:20px;
+
+    color:#00E5FF;
+}
+
+#loading-text{
+
+    margin-bottom:15px;
+}
+
+#loading-bar{
+
+    width:500px;
+    max-width:80vw;
+
+    height:12px;
+
+    border:1px solid #00E5FF;
+}
+
+#loading-progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#00E5FF;
+}
+
+#city-title{
+
+    font-size:9vw;
+
+    letter-spacing:14px;
+
+    margin-bottom:20px;
+}
+
+#link-status{
+
+    margin-top:40px;
+
+    color:#00E5FF;
+}
