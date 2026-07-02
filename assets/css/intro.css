@@ -74,3 +74,30 @@
 
     color:#00E5FF;
 }
+#city-title a{
+    color:white;
+    text-decoration:none;
+    position:relative;
+    display:inline-block;
+    transition:color .2s;
+}
+#city-title a:hover{
+    color:#00E5FF;
+    animation:linkGlitch .25s infinite;
+}
+#city-title a.connecting{
+    animation:none;
+    color:#00E5FF;
+}
+#transition-overlay{
+    position:fixed;
+    inset:0;
+    background:#050505;
+    z-index:999;
+    opacity:0;
+    pointer-events:none;
+}
+#transition-overlay.active{
+    opacity:1;
+    animation:overlayGlitch .4s steps(2) 3;
+}
