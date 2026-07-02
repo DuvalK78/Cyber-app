@@ -17,3 +17,15 @@
     }
 
 }
+@keyframes linkGlitch{
+    0%{ transform:translate(0); }
+    25%{ transform:translate(-2px,1px); }
+    50%{ transform:translate(2px,-1px); }
+    75%{ transform:translate(-1px,-1px); }
+    100%{ transform:translate(0); }
+}
+@keyframes overlayGlitch{
+    0%{ opacity:1; }
+    50%{ opacity:.7; }
+    100%{ opacity:1; }
+}
