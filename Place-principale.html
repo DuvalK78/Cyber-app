@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <title>KASURAKU-SHI</title>
+    <title>KASURAKU-SHI // HUB</title>
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="assets/css/hub.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 </head>
-  <body>
-    <p>
-      JJJJJ
-    </p>
-  </body>
+<body>
+    <main id="hub">
+        <header id="hub-header">
+            <span id="hub-status">LINK ACTIVE</span>
+            <span id="hub-clock"></span>
+        </header>
+
+        <div id="node-map">
+            <!-- placeholders, un par node -->
+            <div class="node" data-node="01">NODE_01</div>
+            <div class="node" data-node="02">NODE_02</div>
+            <div class="node" data-node="03">NODE_03</div>
+        </div>
+
+        <div id="lore-feed"></div>
+
+        <div id="glitch-layer"></div>
+    </main>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/hub.js"></script>
+</body>
 </html>
