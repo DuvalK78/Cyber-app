@@ -87,3 +87,21 @@ function blackout(){
     },3000);
 
 }
+document.getElementById("city-title")
+.querySelector("a")
+.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    const link = this;
+    const href = link.href;
+    const overlay = document.getElementById("transition-overlay");
+
+    link.classList.add("connecting");
+    overlay.classList.add("active");
+
+    setTimeout(()=>{
+        window.location.href = href;
+    }, 600);
+
+});
