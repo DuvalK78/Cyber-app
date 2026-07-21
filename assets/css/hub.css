@@ -68,3 +68,37 @@
     letter-spacing:1px;
     animation:loreFade 5s ease-in-out forwards;
 }
+#glitch-layer{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:50;
+    mix-blend-mode:screen;
+}
+#glitch-layer::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        to bottom,
+        rgba(0,229,255,.03) 0px,
+        rgba(0,229,255,.03) 1px,
+        transparent 2px,
+        transparent 3px
+    );
+    animation:scanScroll 6s linear infinite;
+}
+.tear{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:2px;
+    background:#00E5FF;
+    opacity:.5;
+}
+.rgb-split{
+    position:absolute;
+    inset:0;
+    background:rgba(255,0,80,.04);
+    mix-blend-mode:screen;
+}
