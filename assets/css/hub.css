@@ -50,3 +50,21 @@
     color:#050505;
     background:#00E5FF;
 }
+#lore-feed{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    width:340px;
+    max-width:70vw;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    pointer-events:none;
+}
+.lore-line{
+    font-size:.75rem;
+    color:#00E5FF;
+    opacity:0;
+    letter-spacing:1px;
+    animation:loreFade 5s ease-in-out forwards;
+}
