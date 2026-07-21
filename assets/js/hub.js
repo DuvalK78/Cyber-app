@@ -87,3 +87,55 @@ function spawnLoreLine(){
 }
 
 setInterval(spawnLoreLine, 3500);
+function spawnTear(){
+
+    const layer = document.getElementById("glitch-layer");
+
+    const tear = document.createElement("div");
+    tear.classList.add("tear");
+    tear.style.top = Math.random() * 100 + "%";
+    tear.style.animation = "tearFlash .15s ease-out forwards";
+
+    layer.appendChild(tear);
+
+    setTimeout(()=>{
+        tear.remove();
+    }, 200);
+
+}
+
+function spawnRgbSplit(){
+
+    const layer = document.getElementById("glitch-layer");
+
+    const split = document.createElement("div");
+    split.classList.add("rgb-split");
+    split.style.animation = "rgbFlash .3s ease-out forwards";
+
+    layer.appendChild(split);
+
+    setTimeout(()=>{
+        split.remove();
+    }, 300);
+
+}
+
+function scheduleGlitch(){
+
+    const delay = 800 + Math.random() * 2500;
+
+    setTimeout(()=>{
+
+        if(Math.random() > 0.5){
+            spawnTear();
+        }else{
+            spawnRgbSplit();
+        }
+
+        scheduleGlitch();
+
+    }, delay);
+
+}
+
+scheduleGlitch();
