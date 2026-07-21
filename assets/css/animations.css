@@ -35,3 +35,16 @@
     85%{ opacity:.6; }
     100%{ opacity:0; }
 }
+@keyframes scanScroll{
+    0%{ background-position:0 0; }
+    100%{ background-position:0 40px; }
+}
+@keyframes tearFlash{
+    0%{ opacity:.6; }
+    100%{ opacity:0; }
+}
+@keyframes rgbFlash{
+    0%{ opacity:.15; transform:translateX(0); }
+    50%{ opacity:.05; transform:translateX(2px); }
+    100%{ opacity:0; transform:translateX(0); }
+}
