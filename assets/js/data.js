@@ -26,11 +26,11 @@ const popupMessages = [
 
 ];
 const loreFragments = [
-"unité 04 déconnectée sans trace",
-"secteur 7 : accès civil suspendu depuis 340 jours",
-"la ville ne dort pas, elle boucle",
+"unité 04 décoNnect[ALT130]E",
+"s@cteur 7 : accès civil susp%endu epUis 340 [ALT0106]ours",
+"Déconnexion des secteurs 3 à 7",
 "aucune réponse du node_44 depuis l'incident",
-"les registres de naissance s'arrêtent en 2091",
+"Problème sur les registres",
 "quelqu'un a payé pour effacer ce nom",
 "le réseau se souvient, même de ce qu'on efface",
 "03:14 — silence radio sur tout le quartier est",
