@@ -62,3 +62,28 @@ window.addEventListener("resize", ()=>{
     drawNodeLines();
 
 });
+function spawnLoreLine(){
+
+    const feed = document.getElementById("lore-feed");
+
+    const line = document.createElement("div");
+    line.classList.add("lore-line");
+
+    line.innerText =
+        loreFragments[
+            Math.floor(Math.random() * loreFragments.length)
+        ];
+
+    feed.appendChild(line);
+
+    if(feed.children.length > 4){
+        feed.removeChild(feed.children[0]);
+    }
+
+    setTimeout(()=>{
+        line.remove();
+    }, 5000);
+
+}
+
+setInterval(spawnLoreLine, 3500);
