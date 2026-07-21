@@ -139,3 +139,14 @@ function scheduleGlitch(){
 }
 
 scheduleGlitch();
+drawNodeLines();
+initNodes();
+scheduleGlitch();
+
+window.addEventListener("resize", ()=>{
+
+    document.getElementById("node-lines").innerHTML = "";
+
+    drawNodeLines();
+
+});
